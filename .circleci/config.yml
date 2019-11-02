@@ -7,6 +7,4 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Greeting
-          command: notacommand
+      - run: notacommand
