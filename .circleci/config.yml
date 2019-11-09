@@ -36,5 +36,9 @@ workflows:
   prueba:
     jobs:
       - one
-      - two
-      - three
+      - two:
+          requires:
+            - one
+      - three:
+          requires:
+            - two
