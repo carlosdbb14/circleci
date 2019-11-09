@@ -12,10 +12,10 @@ jobs:
             touch hola
             ls
       - checkout
-        - persist_to_workspace:
-          root: home/circleci
-          paths:
-            - .
+      - persist_to_workspace:
+        root: home/circleci
+        paths:
+          - .
   two:
     docker:
       - image: circleci/ruby:2.4.1
