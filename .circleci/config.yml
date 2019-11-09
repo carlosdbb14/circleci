@@ -10,7 +10,6 @@ jobs:
           name: "test one"
           command: |
             pwd
-            cd ~/.aws/config
             ls
   two:
     docker:
@@ -24,9 +23,6 @@ jobs:
           name: "despliegue desarrollo"
           command: |
             scp -i "Key_parcial_3.pem" index.html ubuntu@ec2-18-205-66-162.compute-1.amazonaws.com
-            cd /var/www/html
-            touch Prueba
-            ls
             
   
 workflows:
