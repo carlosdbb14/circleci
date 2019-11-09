@@ -9,34 +9,8 @@ jobs:
       - run: 
           name: "test one"
           command: |
-            touch hola
+            pwt
             ls
-      - persist_to_workspace:
-          root: /home/circleci
-          paths:
-            - ./
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci
-      - run: pwd
-      - run: ls
-      - run: 
-          name: "test two"
-          command: |
-            touch Carlos
-            ls
-  three:
-    docker:
-      - image: circleci/python:latest
-    steps:
-      - checkout
-      - run: pwd
-      - run: ls
-
 workflows:
   version: 2
   prueba:
