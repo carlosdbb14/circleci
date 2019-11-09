@@ -20,7 +20,7 @@ jobs:
           fingerprints:
             - "bd:f8:e1:26:83:67:9f:d7:33:a2:a7:58:3c:8f:84:35"
       - run:
-          name: "despliegue desarrollo
+          name: "despliegue desarrollo"
           command: |
             scp index.html ubuntu@ec2-18-205-66-162.compute-1.amazonaws.com:var/www/html
   
