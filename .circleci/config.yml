@@ -8,7 +8,7 @@ jobs:
       - run: echo "A first hello"
       - run: 
           name: "test one"
-          commnad: |
+          command: |
             touch hola
             ls
   two:
@@ -20,7 +20,7 @@ jobs:
       - run: ls
       - run: 
           name: "test two"
-          commnad: |
+          command: |
             touch Carlos
             ls
   three:
