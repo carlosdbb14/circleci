@@ -12,11 +12,18 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
+      - run: pwd
+      - run: sleep 25
+  three:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
       - run: ls
       - run: sleep 25
 workflows:
   version: 2
-  one_and_two:
+  prueba:
     jobs:
       - one
       - two
