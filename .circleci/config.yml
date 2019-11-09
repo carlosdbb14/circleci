@@ -11,7 +11,6 @@ jobs:
           command: |
             touch hola
             ls
-      - checkout
       - persist_to_workspace:
         root: home/circleci
         paths:
