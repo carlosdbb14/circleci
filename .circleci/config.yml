@@ -6,12 +6,26 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: |
-          - touch hola
-          - ls
+      - run: 
+          name: "test one"
+          commnad: |
+            touch hola
+            ls
   two:
     docker:
       - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: pwd
+      - run: ls
+      - run: 
+          name: "test two"
+          commnad: |
+            touch Carlos
+            ls
+  three:
+    docker:
+      - image: builtpack-deps:trusty
     steps:
       - checkout
       - run: pwd
@@ -23,3 +37,4 @@ workflows:
     jobs:
       - one
       - two
+      - three
