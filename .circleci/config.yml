@@ -25,7 +25,7 @@ jobs:
             ls
   three:
     docker:
-      - image: builtpack-deps:trusty
+      - image: circleci/python:latest
     steps:
       - checkout
       - run: pwd
