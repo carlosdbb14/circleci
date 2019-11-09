@@ -6,7 +6,9 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: sleep 25
+      - run: |
+          - touch hola
+          - ls
   two:
     docker:
       - image: circleci/ruby:2.4.1
@@ -14,7 +16,6 @@ jobs:
       - checkout
       - run: pwd
       - run: ls
-      - run: sleep 25
 
 workflows:
   version: 2
