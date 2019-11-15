@@ -16,15 +16,12 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "bd:f8:e1:26:83:67:9f:d7:33:a2:a7:58:3c:8f:84:35"
-            - "d2:1b:eb:c8:23:41:58:44:6f:c9:01:24:ab:34:e5:5b"
       - run:
           name: "despliegue desarrollo"
           command: |
-            scp index.html ubuntu@3.227.253.49:/
-            yes
+            chmod 400 Key_parcial_3.pem
+            scp -i "Key_parcial_3.pem" index.html ubuntu@3.227.253.49:/
+            
             
   
 workflows:
