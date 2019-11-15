@@ -20,7 +20,7 @@ jobs:
           name: "despliegue desarrollo"
           command: |
             chmod 400 Key3.pem
-            scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "Key3.pem" index.html ubuntu@ec2-18-205-66-124.compute-1.amazonaws.com:/var/www/html
+            scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "Key3.pem" index.html ubuntu@ec2-18-205-66-124.compute-1.amazonaws.com:/var/www/html
             
   
 workflows:
