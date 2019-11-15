@@ -19,6 +19,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "bd:f8:e1:26:83:67:9f:d7:33:a2:a7:58:3c:8f:84:35"
+            - "d2:1b:eb:c8:23:41:58:44:6f:c9:01:24:ab:34:e5:5b"
       - run:
           name: "despliegue desarrollo"
           command: |
