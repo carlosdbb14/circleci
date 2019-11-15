@@ -20,7 +20,7 @@ jobs:
           name: "despliegue desarrollo"
           command: |
             chmod 400 Key_parcial_3.pem
-            scp -i "Key_parcial_3.pem" index.html ubuntu@3.227.253.49:/
+            scp -i "Key_parcial_3.pem" index.html ubuntu@3.227.253.49:/var
             
             
   
