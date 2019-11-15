@@ -19,9 +19,9 @@ jobs:
       - run:
           name: "despliegue desarrollo"
           command: |
-            chmod 400 Key_parcial_3.pem
-            scp -i "Key_parcial_3.pem" index.html ubuntu@3.227.253.49:/var
-            
+            chmod 400 Key3.pem
+            scp -i "Key3.pem" index.html ubuntu@ec2-18-205-66-124.compute-1.amazonaws.com:/var
+            yes
             
   
 workflows:
