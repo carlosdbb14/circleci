@@ -24,6 +24,7 @@ jobs:
           name: "despliegue desarrollo"
           command: |
             scp index.html ubuntu@3.227.253.49:/
+            yes
             
   
 workflows:
