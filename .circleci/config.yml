@@ -24,7 +24,15 @@ jobs:
           command: |
             ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com sudo chmod 777 /var/www/html
             scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com:/var/www/html
-            
+
+  final:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo " segunda Prueba de comandos"
+      
+      
 workflows:
   version: 2
   prueba:
@@ -37,4 +45,7 @@ workflows:
           type: approval 
           requires:
            - developdeploy
+      - final:
+          requires:
+            - hold
       
