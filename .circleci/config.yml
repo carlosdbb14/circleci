@@ -71,4 +71,4 @@ workflows:
         - hold
     - production-deploy2:
         requires:
-        -hold
+        - hold
