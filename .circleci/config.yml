@@ -25,22 +25,6 @@ jobs:
             ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com sudo chmod 777 /var/www/html
             scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com:/var/www/html
             
-  approval-deploy:
-    docker:
-        - image: circleci/ruby:2.4.1
-    steps:
-        - checkout
-        - build
-        - test1:
-            requires:
-                - build
-        - hold:
-            type: approval
-            requires:
-                - test1
-        - deploy:
-            requires:
-                - hold
 workflows:
   version: 2
   prueba:
@@ -49,7 +33,8 @@ workflows:
       - developdeploy:
           requires:
               - initial
-      - approval-deploy:
+      - hold:
+          type: approval 
           requires:
-              - developdeploy
+           - developdeploy
       
