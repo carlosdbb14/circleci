@@ -100,13 +100,13 @@ workflows:
             branches:
               only:
                 - master
-      - test:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
+    - test:
+        requires:
+          - build
+        filters:
+          branches:
+            only:
+              - master
     - developdeploy:
         requires:
         - test
