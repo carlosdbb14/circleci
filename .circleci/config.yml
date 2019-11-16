@@ -43,7 +43,7 @@ jobs:
                   echo "prueba"
                   sudo chmod 400 "qwerty.pem"
                   sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" |
-                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html ubuntu@10.0.2.74:/var/www/html"
+                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" index.html ubuntu@10.0.2.74:/var/www/html"
   
   production-deploy2:
     docker:
@@ -61,7 +61,7 @@ jobs:
                   echo "prueba"
                   sudo chmod 400 "qwerty.pem"
                   sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html" |
-                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html  ubuntu@10.0.2.150:/var/www/html"    
+                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" index.html  ubuntu@10.0.2.150:/var/www/html"    
 
       
 workflows:
