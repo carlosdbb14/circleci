@@ -9,7 +9,7 @@ jobs:
     - run:
         name: test one
         command: |
-          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-100-25-43-172.compute-1.amazonaws.com hostname -i
+          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-100-25-43-172.compute-1.amazonaws.com touch ~/hola
               
   developdeploy:
     docker:
