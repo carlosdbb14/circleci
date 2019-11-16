@@ -1,58 +1,57 @@
-version: 2
+version:
 jobs:
   initial:
     docker:
-      - image: circleci/ruby:2.4.1
+    - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - run: echo "Prueba de comandos"
-      - run: 
-          name: "test one"
-          command: |
-            pwd
-            ls
+    - checkout
+    - run: echo "Prueba de comandos"
+    - run:
+        name: test one
+        command: |
+          pwd
+          ls
   developdeploy:
     docker:
-      - image: circleci/ruby:2.4.1
+    - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "d7:78:96:12:2d:73:19:01:c2:41:25:5a:2a:f0:28:a8"
-      - run:
-          name: "despliegue desarrollo"
-          command: |
-            ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com sudo chmod 777 /var/www/html
-            scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com:/var/www/html
-
+    - checkout
+    - add_ssh_keys:
+        fingerprints:
+        - d7:78:96:12:2d:73:19:01:c2:41:25:5a:2a:f0:28:a8
+    - run:
+        name: despliegue desarrollo
+        command: |
+          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com sudo chmod 777 /var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-3-230-167-245.compute-1.amazonaws.com:/var/www/html
+  
   production-deploy:
     docker:
-      - image: circleci/ruby:2.4.1
+    - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "d7:78:96:12:2d:73:19:01:c2:41:25:5a:2a:f0:28:a8"
-      - run:
-          name: "despliegue desarrollo"
-          command: |
-            ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-34-229-65-55.compute-1.amazonaws.com sudo chmod 777 /var/www/html
-            scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-34-229-65-55.compute-1.amazonaws.com:/var/www/html
-
+    - checkout
+    - add_ssh_keys:
+        fingerprints:
+        - d7:78:96:12:2d:73:19:01:c2:41:25:5a:2a:f0:28:a8
+    - run:
+        name: despliegue desarrollo
+        command: |
+          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-34-229-65-55.compute-1.amazonaws.com sudo chmod 777 /var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@ec2-34-229-65-55.compute-1.amazonaws.com:/var/www/html
+    
       
 workflows:
   version: 2
   prueba:
     jobs:
-      - initial:
-      - developdeploy:
-          requires:
-              - initial
-      - hold:
-          type: approval 
-          requires:
-            - developdeploy
-      - production-deploy:
-          requires:
-            - hold
-      
+    - initial
+    - developdeploy:
+        requires:
+        - initial
+    - hold:
+        type: approval
+        requires:
+        - developdeploy
+    - production-deploy:
+        requires:
+        - hold
