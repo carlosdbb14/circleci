@@ -34,13 +34,13 @@ jobs:
     - checkout
     - add_ssh_keys:
         fingerprints:
-        - fa:15:45:6e:89:63:27:2b:43:82:d6:0a:42:be:a2:08
+        - f3:86:b9:d3:9a:ca:9f:e8:3a:88:83:e2:48:e4:b0:1f
     - run:
         name: despliegue 1
         command: |
-          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.133.149.127 "sudo chmod 777 ~/"
-          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@3.133.149.127:~/
-                  ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.133.149.127 "
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "
+                  echo "prueba"
                   sudo chmod 400 "qwerty.pem"
                   sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" |
                   sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html ubuntu@10.0.2.74:/var/www/html"
@@ -52,13 +52,13 @@ jobs:
     - checkout
     - add_ssh_keys:
         fingerprints:
-        - fa:15:45:6e:89:63:27:2b:43:82:d6:0a:42:be:a2:08
+        - f3:86:b9:d3:9a:ca:9f:e8:3a:88:83:e2:48:e4:b0:1f
     - run:
         name: despliegue 2
         command: |
-          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.133.149.127 "sudo chmod 777 ~/"
-          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@3.133.149.127:~/
-                  ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.133.149.127 "
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "
+                  echo "prueba"
                   sudo chmod 400 "qwerty.pem"
                   sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html" |
                   sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html  ubuntu@10.0.2.150:/var/www/html"    
