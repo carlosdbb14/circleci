@@ -43,8 +43,8 @@ jobs:
           scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@3.14.132.116:~/
                   ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.14.132.116 "
                   sudo chmod 400 "qwerty.pem"
-                  ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" |
-                  scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html ubuntu@10.0.2.74:/var/www/html"
+                  sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" |
+                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwerty.pem" ~/index.html ubuntu@10.0.2.74:/var/www/html"
   
   production-deploy2:
     docker:
@@ -61,8 +61,8 @@ jobs:
           scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@3.14.132.116:~/
                   ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.14.132.116 "
                   sudo chmod 400 "qwerty.pem"
-                  ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html" |
-                  scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwert.pem" ~/index.html  ubuntu@10.0.2.150:/var/www/html"    
+                  sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html" |
+                  sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r -i "qwert.pem" ~/index.html  ubuntu@10.0.2.150:/var/www/html"    
 
       
 workflows:
