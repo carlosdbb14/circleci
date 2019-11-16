@@ -44,10 +44,7 @@ workflows:
   version: 2
   prueba:
     jobs:
-      - build
       - initial:
-          requires:
-              - build
       - developdeploy:
           requires:
               - initial
