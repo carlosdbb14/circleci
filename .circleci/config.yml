@@ -44,7 +44,10 @@ workflows:
   version: 2
   prueba:
     jobs:
-      - initial
+      - build
+      - initial:
+          requires:
+              - build
       - developdeploy:
           requires:
               - initial
