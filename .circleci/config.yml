@@ -89,7 +89,7 @@ workflows:
           branches:
             only:
               - master
-    test:
+    - test:
         requires:
           -initial
     - developdeploy:
