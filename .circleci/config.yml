@@ -48,7 +48,7 @@ workflows:
       - initial
       - developdeploy:
           requires:
-              -one
+              - initial
       - approval-deploy:
           requires:
               - developdeploy
