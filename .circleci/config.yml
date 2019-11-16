@@ -38,11 +38,10 @@ jobs:
     - run:
         name: despliegue 1
         command: |
-          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo chmod 400 "qwerty.pem" ""
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" "
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html ubuntu@10.0.2.74:/var/www/html" "
-  
+          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@3.15.202.172 sudo chmod 777 /var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@3.15.202.172:/var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r view ubuntu@3.15.202.172:/var/www/html
+
   production-deploy2:
     docker:
     - image: circleci/ruby:2.4.1
@@ -51,10 +50,13 @@ jobs:
     - add_ssh_keys:
         fingerprints:
         - f3:86:b9:d3:9a:ca:9f:e8:3a:88:83:e2:48:e4:b0:1f
-    - run: scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
-    - run: ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html""
-    - run: ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html  ubuntu@10.0.2.150:/var/www/html""    
-
+    - run:
+        name: despliegue 1
+        command: |
+          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@18.188.143.11 sudo chmod 777 /var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.188.143.11:/var/www/html
+          scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r view ubuntu@18.188.143.11:/var/www/html
+         
       
 workflows:
   version: 2
