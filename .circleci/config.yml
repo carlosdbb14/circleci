@@ -40,8 +40,8 @@ jobs:
         command: |
           scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
                   ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo chmod 400 "qwerty.pem" ""
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html"
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html ubuntu@10.0.2.74:/var/www/html"
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.74 "sudo chmod 777 /var/www/html" "
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html ubuntu@10.0.2.74:/var/www/html" "
   
   production-deploy2:
     docker:
@@ -56,8 +56,8 @@ jobs:
         command: |
           scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
                   ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 " sudo chmod 400 "qwerty.pem"
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html"
-                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html  ubuntu@10.0.2.150:/var/www/html"    
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html""
+                  ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html  ubuntu@10.0.2.150:/var/www/html""    
 
       
 workflows:
