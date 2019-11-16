@@ -11,33 +11,7 @@ jobs:
         command: |
           ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-100-25-43-172.compute-1.amazonaws.com "touch ~/hola |
           ls | 
-          hostname -i"
-  build:
-      docker:
-        - image: circleci/node:8.10
-      working_directory: ~/repo
-
-      steps:
-        - checkout
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "package.json" }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
-
-        - run: yarn install
-
-        - save_cache:
-            paths:
-              - node_modules
-            key: v1-dependencies-{{ checksum "package.json" }}
-  test:
-      docker:
-        - image: circleci/node:8.10
-
-      working_directory: ~/repo
-
-              
+          hostname -i"            
   developdeploy:
     docker:
     - image: circleci/ruby:2.4.1
@@ -95,21 +69,9 @@ workflows:
   prueba:
     jobs:
     - initial
-    - build: 
-          filters:
-            branches:
-              only:
-                - master
-    - test:
-        requires:
-          - build
-        filters:
-          branches:
-            only:
-              - master
     - developdeploy:
         requires:
-        - test
+        - initial
     - hold:
         type: approval
         requires:
