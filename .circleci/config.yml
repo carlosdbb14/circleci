@@ -2,16 +2,38 @@ version:
 jobs:
   initial:
     docker:
-    - image: circleci/ruby:2.4.1
+      - image: circleci/node:8.10
+    working_directory: ~/repo
+
     steps:
-    - checkout
-    - run: echo "Prueba de comandos"
-    - run:
-        name: test one
-        command: |
-          ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null ubuntu@ec2-100-25-43-172.compute-1.amazonaws.com "touch ~/hola |
-          ls | 
-          hostname -i"            
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  test:
+    docker:
+      - image: circleci/node:8.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: yarn run test
+
   developdeploy:
     docker:
     - image: circleci/ruby:2.4.1
@@ -62,10 +84,17 @@ workflows:
   version: 2
   prueba:
     jobs:
-    - initial
+    - initial:
+        filters:
+          branches:
+            only:
+              - master
+    test:
+        requires:
+          -initial
     - developdeploy:
         requires:
-        - initial
+        - test
     - hold:
         type: approval
         requires:
