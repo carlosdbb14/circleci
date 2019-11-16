@@ -52,7 +52,6 @@ jobs:
         fingerprints:
         - f3:86:b9:d3:9a:ca:9f:e8:3a:88:83:e2:48:e4:b0:1f
     - run: scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -r index.html ubuntu@18.191.236.2:~/
-    - run: ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 " sudo chmod 400 "qwerty.pem" "
     - run: ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -i "qwerty.pem" ubuntu@10.0.2.150 "sudo chmod 777 /var/www/html""
     - run: ssh -oStrictHostKeyChecking=no ubuntu@3.133.149.127 "sudo scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  -i "qwerty.pem" index.html  ubuntu@10.0.2.150:/var/www/html""    
 
