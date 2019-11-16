@@ -91,7 +91,7 @@ workflows:
               - master
     - test:
         requires:
-          -initial
+          - initial
     - developdeploy:
         requires:
         - test
